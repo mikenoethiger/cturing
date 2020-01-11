@@ -5,9 +5,9 @@ The universal machine is written in C and can be executed from command line.
 Download the source code `cturing.c`, compile it e.g. using [gcc](https://gcc.gnu.org/) `gcc -o cturing cturing.c` and show the user manual `./cturing -h`.
 
 Alternatively you can download the precompiled binary files from this repository:
-* Linux: cturing_linux (compiled with x86_64-linux-gnu)
-* OSX: cturing_osx (compiled with x86_64-apple-darwin18.7.0)
-* Windows: cturing.exe (compiled with i686-w64-mingw32)
+* Linux: [cturing_linux](https://github.com/mikenoethiger/cturing/blob/master/out/cturing_linux) (compiled with x86_64-linux-gnu)
+* OSX: [cturing_osx](https://github.com/mikenoethiger/cturing/blob/master/out/cturing_osx) (compiled with x86_64-apple-darwin18.7.0)
+* Windows: [cturing.exe](https://github.com/mikenoethiger/cturing/blob/master/out/cturing.exe) (compiled with i686-w64-mingw32)
 
 User Manual Extract:
 
