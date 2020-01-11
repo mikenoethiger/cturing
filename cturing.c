@@ -99,8 +99,8 @@ void print_usage(const char *prog_name) {
 	printf("\nOUTPUT\n");
 	printf("\tThe verdict over a given input word will either be accept, reject, or loop. The verdicts can be interpreted as follows:\n");
 	printf("\t * If the verdict is accept, than the input word is element of the language recognized by TM.\n");
-	printf("\t * If the verdict is accept or reject (i.e. TM halts), than the input word is element of a decidable language.\n");
-	printf("\t * If the TM halts for all possible inputs, it shall be called a decider over S* and S* shall be considered a decidable language.\n");
+	printf("\t * If the verdict is reject (i.e. TM halts), than the input word is not element of the language recognized by TM.\n");
+	printf("\t * If the TM halts for all possible inputs, it shall be called a decider over S* (S being the input alphabet) and S* shall be considered a decidable language.\n");
 	printf("\t * As long as the machine runs, the verdict is loop and we remain uncertain about the categorization of the input word.\n");
 	printf("\tUnfortunately, the universal machine can not make any of the above statements, without running the word on the TM.\n");
 	printf("\tThat is, it can not detect infinite loops in the TM description without running them (at least not in the general case).\n");
@@ -149,9 +149,10 @@ void print_usage(const char *prog_name) {
 	printf("\tEvery missing transition will be augmented by the universal machine by going to Qr and moving head to left.\n");
 	printf("\tNow the 7-tuple is complete.\n");
 	printf("\nEXAMPLE\n");
-	printf("\tLet A be a language; A = {0,1,#}*.\n");
+	printf("\tLet S be the input alphabet of a TM; S = {0,1,#}*.\n");
 	printf("\tLet B be a language; B = { w#w | w ∈ {0,1}* }.\n");
-	printf("\tIn the following is a description of a TM that recognizes B and decides A. To express it in natural language, the TM will check for all words that consist of 0, 1 and #, whether the parts before and after the # are equal.\n");
+	printf("\tIn the following is a description of a TM with input alphabet S, that decides B (B is decidable because TM exists).\n");
+	printf("\tTo express it in natural language, the TM will check for an input word which consists of 0, 1 and #, whether the parts before and after the # are equal.\n");
 	printf("\t2\n");
 	printf("\t2,#,9,R\n");
 	printf("\t9,x,9,R\n");

@@ -15,7 +15,7 @@ User Manual Extract:
         	-h            show usage
         	-s tape_size  specify a tape size (default 1024)
         
-        AUTHOR
+        AUTHORS
         	Mike Nöthiger (noethiger.mike@gmail.com)
         
         DESCRIPTION
@@ -25,8 +25,8 @@ User Manual Extract:
         OUTPUT
         	The verdict over a given input word will either be accept, reject, or loop. The verdicts can be interpreted as follows:
         	 * If the verdict is accept, than the input word is element of the language recognized by TM.
-        	 * If the verdict is accept or reject (i.e. TM halts), than the input word is element of a decidable language.
-        	 * If the TM halts for all possible inputs, it shall be called a decider over S* and S* shall be considered a decidable language.
+        	 * If the verdict is reject (i.e. TM halts), than the input word is not element of the language recognized by TM.
+        	 * If the TM halts for all possible inputs, it shall be called a decider over S* (S being the input alphabet) and S* shall be considered a decidable language.
         	 * As long as the machine runs, the verdict is loop and we remain uncertain about the categorization of the input word.
         	Unfortunately, the universal machine can not make any of the above statements, without running the word on the TM.
         	That is, it can not detect infinite loops in the TM description without running them (at least not in the general case).
@@ -76,9 +76,10 @@ User Manual Extract:
         	Now the 7-tuple is complete.
         
         EXAMPLE
-        	Let A be a language; A = {0,1,#}*.
+        	Let S be the input alphabet of a TM; S = {0,1,#}*.
         	Let B be a language; B = { w#w | w ∈ {0,1}* }.
-        	In the following is a description of a TM that recognizes B and decides A. To express it in natural language, the TM will check for all words that consist of 0, 1 and #, whether the parts before and after the # are equal.
+        	In the following is a description of a TM with input alphabet S, that decides B (B is decidable because TM exists).
+        	To express it in natural language, the TM will check for an input word which consists of 0, 1 and #, whether the parts before and after the # are equal.
         	2
         	2,#,9,R
         	9,x,9,R
