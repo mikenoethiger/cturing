@@ -9,6 +9,12 @@ Alternatively you can download the precompiled binary files from this repository
 * OSX: [cturing_osx](https://github.com/mikenoethiger/cturing/blob/master/out/cturing_osx) (compiled with x86_64-apple-darwin18.7.0)
 * Windows: [cturing.exe](https://github.com/mikenoethiger/cturing/blob/master/out/cturing.exe) (compiled with i686-w64-mingw32)
 
+# Examples
+
+The `example` directory contains several turing machine descriptions.
+* `tm_description.txt` is a turing machine that accepts words over { 0, 1, # }* if the parts before and after the # are equal. This machine is a decider (i.e. it will halt for all possible inputs).
+* `tm_description1.txt` is a turing machine that accepts words over { a }*, whose length modulo 3 is equal to 0. It will reject words if |w| % 3 = 1 and loop if |w| % 3 = 2. This machine isn't a decider.
+
 User Manual Extract:
 
         Usage: out/cturing_osx [-h] [-s tape_size] < tm_description.txt
