@@ -5,6 +5,10 @@ The progarm is written in C and can be executed as a command line application.
 The turing machine description (i.e. program you want to run) is specified by a text file whose structure is described in the **INPUT** section of the user [manual](#user-manual-extract). 
 The ouput will show for each computation step the turing machine configuration and the tape contents.
 
+# Installation
+
+Check out the [releases](https://github.com/mikenoethiger/cturing/releases) for OS specific binaries and installation instructions.
+
 # Compile
 
 Download the the source code (`cturing.c`), compile it e.g. with [gcc](https://gcc.gnu.org/) `gcc -o cturing cturing.c` and run the program `./cturing -h`.
