@@ -1,21 +1,54 @@
 # About
 
-During the lectures on "Theoretical Computer Science" I have created my own universal machine to run turing machines.
-The universal machine is written in C and can be executed from command line.
-Download the source code `cturing.c`, compile it e.g. using [gcc](https://gcc.gnu.org/) `gcc -o cturing cturing.c` and show the user manual `./cturing -h`.
+During the lectures on "Theoretical Computer Science" I have created a turing machine simulator.
+The progarm is written in C and can be executed as a command line application.
+The turing machine description (i.e. program you want to run) is specified by a text file whose structure is described in the **INPUT** section of the user [manual](#user-manual-extract). 
+The ouput will show for each computation step the turing machine configuration and the tape contents.
 
-Alternatively you can download the precompiled binary files from this repository:
-* Linux: [cturing_linux](https://github.com/mikenoethiger/cturing/blob/master/out/cturing_linux) (compiled with x86_64-linux-gnu)
-* OSX: [cturing_osx](https://github.com/mikenoethiger/cturing/blob/master/out/cturing_osx) (compiled with x86_64-apple-darwin18.7.0)
-* Windows: [cturing.exe](https://github.com/mikenoethiger/cturing/blob/master/out/cturing.exe) (compiled with i686-w64-mingw32)
+# Compile
+
+Download the the source code (`cturing.c`), compile it e.g. with [gcc](https://gcc.gnu.org/) `gcc -o cturing cturing.c` and run the program `./cturing -h`.
+
+Or clone this repo and run
+
+```bash
+$ make
+$ out/cturing -h
+```
 
 # Examples
 
-The `example` directory contains several turing machine descriptions.
+The `example` directory contains two turing machine descriptions.
 * `tm_description.txt` is a turing machine that accepts words over { 0, 1, # }* if the parts before and after the # are equal. This machine is a decider (i.e. it will halt for all possible inputs).
 * `tm_description1.txt` is a turing machine that accepts words over { a }*, whose length modulo 3 is equal to 0. It will reject words if |w| % 3 = 1 and loop if |w| % 3 = 2. This machine isn't a decider.
 
-User Manual Extract:
+The output for `cturing < tm_description` is:
+
+```
+Q2	  0 }01#01	init config
+Q3	  1 x}1#01	(Q2,0) -> (Q3,R,x)
+Q3	  2 x1}#01	(Q3,1) -> (Q3,R)
+Q5	  3 x1#}01	(Q3,#) -> (Q5,R)
+Q7	  4 x1}#x1	(Q5,0) -> (Q7,L,x)
+Q8	  5 x}1#x1	(Q7,#) -> (Q8,L)
+Q8	  6 }x1#x1	(Q8,1) -> (Q8,L)
+Q2	  7 x}1#x1	(Q8,x) -> (Q2,R)
+Q4	  8 xx}#x1	(Q2,1) -> (Q4,R,x)
+Q6	  9 xx#}x1	(Q4,#) -> (Q6,R)
+Q6	 10 xx#x}1	(Q6,x) -> (Q6,R)
+Q7	 11 xx#}xx	(Q6,1) -> (Q7,L,x)
+Q7	 12 xx}#xx	(Q7,x) -> (Q7,L)
+Q8	 13 x}x#xx	(Q7,#) -> (Q8,L)
+Q2	 14 xx}#xx	(Q8,x) -> (Q2,R)
+Q9	 15 xx#}xx	(Q2,#) -> (Q9,R)
+Q9	 16 xx#x}x	(Q9,x) -> (Q9,R)
+Q9	 17 xx#xx}_	(Q9,x) -> (Q9,R)
+Q_acc	 18 xx#x}x_	(Q9,_) -> (Q0,L)
+```
+
+# User Manual Extract
+
+Run `cturing -h` to show the user manual.
 
         Usage: out/cturing_osx [-h] [-s tape_size] < tm_description.txt
         	-h            show usage
@@ -109,3 +142,13 @@ User Manual Extract:
         	5,0,7,L,x
         	0
         	101#101
+
+# License
+
+Copyright 2019 Mike Nöthiger (noethiger.mike@gmail.com)
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 3 of the License.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program (COPYING file.) If not, see https://www.gnu.org/licenses/.
